@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Palette: ivory & olive
+   warm ivory ground · linen bands · deep olive accent · sage botanicals
+------------------------------------------------------------------- */
+:root {
+  --ivory: #faf6f0;
+  --linen: #f2ebe1;
+  --paper: #fffdf9;
+  --olive: #803748;
+  --olive-deep: #803748;
+  --ink: #2f3127;
+  --body: #4d4943;
+  --muted: #6b655d;
+  --sage: #8c9474;
+  --sage-light: #b9bda3;
+  --line: #ddd3c5;
+  --line-soft: #e6ddd0;
+  --field: #9c9285;
+  --placeholder: #dcd0bf;
+  --placeholder-ink: #4f4941;
+  --on-olive: #e3decf;
+}
+
+@theme inline {
+  --color-ivory: var(--ivory);
+  --color-linen: var(--linen);
+  --color-paper: var(--paper);
+  --color-olive: var(--olive);
+  --color-olive-deep: var(--olive-deep);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-sage: var(--sage);
+  --color-sage-light: var(--sage-light);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-field: var(--field);
+  --color-placeholder: var(--placeholder);
+  --color-placeholder-ink: var(--placeholder-ink);
+  --color-on-olive: var(--on-olive);
+
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-script: var(--font-dynalight), cursive;
+  --font-sans: var(--font-jost), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--olive);
+  color: var(--ivory);
+}
+
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+
+@layer components {
+  .page-x {
+    padding-inline: clamp(16px, 5vw, 64px);
+  }
+
+  .eyebrow {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--body);
+  }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 0 28px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
+  .btn-solid {
+    background: var(--olive);
+    color: var(--ivory);
+  }
+  .btn-solid:hover {
+    background: var(--olive-deep);
+  }
+  .btn-outline {
+    border: 1px solid var(--ink);
+    color: var(--ink);
+  }
+  .btn-outline:hover {
+    background: var(--ink);
+    color: var(--ivory);
+  }
+  .btn-outline-light {
+    border: 1px solid var(--ivory);
+    color: var(--ivory);
+  }
+  .btn-outline-light:hover {
+    background: var(--ivory);
+    color: var(--olive);
+  }
+
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    transition: gap 0.2s ease;
+  }
+  .link-arrow:hover,
+  .group:hover .link-arrow {
+    gap: 14px;
+  }
+
+  /* ---------- form ---------- */
+  .field-label {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .field {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 48px;
+    padding: 0 14px;
+    border: 1px solid var(--field);
+    border-radius: 2px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 16px;
+    font-weight: 300;
+  }
+  textarea.field {
+    padding: 12px 14px;
+    line-height: 1.5;
+    resize: vertical;
+  }
+  .field::placeholder {
+    color: var(--muted);
+  }
+
+  .choice {
+    flex: 1 1 200px;
+    min-height: 52px;
+    padding: 0 20px;
+    border: 1px solid var(--field);
+    border-radius: 2px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .choice[aria-pressed="true"] {
+    border-color: var(--olive);
+    background: var(--olive);
+    color: var(--ivory);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
